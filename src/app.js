@@ -1,3 +1,4 @@
+// IMPORT REQUIRED LIBRARIES AND SECURITY PACKAGES
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
@@ -6,6 +7,10 @@ const helmet = require("helmet");
 
 const app = express();
 
-app.use(cors());
+const morganOption = process.env.NODE_ENV === "production" ? "tiny" : "common";
+
+app.use(morgan(morganOption));
 app.use(helmet());
-app.use(morgan("dev"));
+app.use(cors());
+
+module.exports = app;

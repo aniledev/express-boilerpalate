@@ -7,7 +7,7 @@ const helmet = require("helmet");
 
 const app = express();
 
-const morganOption = process.env.NODE_ENV === "production" ? "tiny" : "common";
+const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
 //STANDARD MIDDLEWARE
 app.use(morgan(morganOption));
@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 //STILL MIDDLEWARE
 app.use(function errorHandler(error, req, res, next) {
   let response;
-  if (process.env.NODE_ENV === "production") {
+  if (NODE_ENV === "production") {
     response = { error: { message: "server error" } };
   } else {
     console.error(error);

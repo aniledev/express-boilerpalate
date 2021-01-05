@@ -2,10 +2,10 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
-const cors = require("cors");
 const helmet = require("helmet");
+const cors = require("cors");
 const winston = require("winston");
-const { NODE_ENV } = require("./config");
+const { NODE_ENV, PORT } = require("./config");
 
 const app = express();
 

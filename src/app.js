@@ -8,7 +8,7 @@ const { NODE_ENV } = require("./config");
 
 const app = express();
 
-const morganOption = NODE_ENV === "production" ? "tiny" : "common";
+const morganOption = NODE_ENV === "production" ? "tiny" : "dev";
 
 //STANDARD MIDDLEWARE
 app.use(morgan(morganOption));

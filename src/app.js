@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const winston = require("winston");
 const { NODE_ENV, PORT } = require("./config");
+const errorHandler = require("./errorHandler");
 
 const app = express();
 
@@ -38,16 +39,7 @@ app.get("/", (req, res) => {
 
 // CATCH ANY THROWN ERRORS AND THEN DEFINE THE ERROR AND KEEP THE APPLICATION RUNNING;
 //STILL MIDDLEWARE
-app.use(function errorHandler(error, req, res, next) {
-  let response;
-  if (NODE_ENV === "production") {
-    response = { error: { message: "server error" } };
-  } else {
-    console.error(error);
-    response = { message: error.message, error };
-  }
-  res.status(500).json(response);
-});
+app.use(errorHandler);
 
 //PIPELINE ENDS
 module.exports = app;

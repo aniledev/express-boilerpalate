@@ -8,24 +8,11 @@ const winston = require("winston");
 const { NODE_ENV, PORT } = require("./config");
 const errorHandler = require("./errorHandler");
 const router = require("./router");
+const logger = require("./logger");
 
 const app = express();
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "dev";
-
-const logger = winston.createLogger({
-  level: "info",
-  format: winston.format.json(),
-  transports: [new winston.transports.File({ filename: "info.log" })],
-});
-
-if (NODE_ENV !== "production") {
-  logger.add(
-    new winston.transports.Console({
-      format: winston.format.simple(),
-    })
-  );
-}
 
 //STANDARD MIDDLEWARE
 app.use(morgan(morganOption));

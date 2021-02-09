@@ -7,4 +7,6 @@ const service = require("./service");
 const Router = express.Router();
 const bodyParser = express.json();
 
-Router.route().get().post().;
+Router.route().get().post();
+
+module.exports = router;

@@ -7,6 +7,7 @@ const cors = require("cors");
 const winston = require("winston");
 const { NODE_ENV, PORT } = require("./config");
 const errorHandler = require("./errorHandler");
+const router = require("./router");
 
 const app = express();
 
